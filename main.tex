@@ -1,0 +1,45 @@
+\documentclass[11pt]{book} % [optional: openany]
+\usepackage[utf8]{inputenc}
+
+\usepackage[english]{babel} % [optional: ngerman]
+\usepackage[autostyle, english = american]{csquotes}
+\MakeOuterQuote{"}
+
+\usepackage[style=authoryear]{biblatex}
+\addbibresource{bibliography.bib}
+
+% remove indent after paragraph
+\usepackage[parfill]{parskip}
+
+% remove empty page between \frontmatter\mainmatter\backmatter [optional]
+\let\cleardoublepage\clearpage
+
+% remove page numbering from pages automatically created by book documentclass
+\let\origdoublepage\cleardoublepage
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\origdoublepage}}
+\let\cleardoublepage\clearemptydoublepage
+
+\begin{document}
+
+\input{titlepage.tex}
+%%%%%%%%%%%%%%%%%%%%
+\frontmatter
+
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%
+\mainmatter
+
+\input{chapters/introduction}
+\input{chapters/body}
+\input{chapters/conclusion}
+
+%%%%%%%%%%%%%%%%%%%%
+\backmatter
+
+\printbibliography[
+heading=bibintoc,
+title={Bibliography}
+]
+
+\end{document}
